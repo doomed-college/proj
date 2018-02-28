@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Power Generation Analyzer</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -16,11 +16,75 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['State', 'Population'],
+    ['Uttar Pradesh', 199581477],
+    ['Maharashtra', 112372972],
+    ['Bihar', 103804637],
+    ['West Bengal', 91347736],
+    ['Madhya Pradesh', 72597565],
+    ['Tamil Nadu', 72138958],
+    ['Rajasthan', 68621012],
+    ['Karnataka', 61130704],
+    ['Gujarat', 60383628],
+    ['Andhra Pradesh', 49386799],
+    ['Odisha', 41947358],
+    ['Telangana', 35286757],
+    ['Kerala', 33387677],
+    ['Jharkhand', 32966238],
+    ['Assam', 31169272],
+    ['Punjab', 27704236],
+    ['Chhattisgarh', 25540196],
+    ['Haryana', 25353081],
+    ['Jammu and Kashmir', 12548926],
+    ['Uttarakhand', 10116752],
+    ['Himachal Pradesh', 6856509],
+    ['Tripura', 3671032],
+    ['Meghalaya', 2964007],
+    ['Manipur', 2721756],
+    ['Nagaland', 1980602],
+    ['Goa', 1457723],
+    ['Arunachal Pradesh', 1382611],
+    ['Mizoram', 1091014],
+    ['Sikkim', 607688],
+    ['Delhi', 16753235],
+    ['Puducherry', 1244464],
+    ['Chandigarh', 1054686],
+    ['Andaman and Nicobar Islands', 379944],
+    ['Dadra and Nagar Haveli', 342853],
+    ['Daman and Diu', 242911],
+    ['Lakshadweep', 64429]
+        ]);
+
+        var options = {region: 'IN',
+    displayMode: 'regions',
+	colorAxis: {colors: ['white', 'blue']},
+    resolution: 'provinces',
+    width: 1080, 
+    height: 600
+		};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.html">Power Generation Analyzer</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,16 +92,30 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 	  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link" href="blank.html">
+          <a class="nav-link" href="mypro.html">
 		  <i class="fa fa-fw fa-file"></i>
             <span class="nav-link-text">My Profile</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Geo Chart</span>
           </a>
+		  <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="hp.html">Hydro power plants</a>
+            </li>
+            <li>
+              <a href="gp.html">Geo thermal power plants</a>
+            </li>
+			<li>
+              <a href="ar.html">Annual rainfall</a>
+            </li>
+            <li>
+              <a href="le.html">***left***</a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
           <a class="nav-link" href="charts.html">
@@ -52,14 +130,14 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="blank.html">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">Comparision</span>
           </a>
         </li>
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="blank.html">
+          <a class="nav-link" href="abtus.html">
             <i class="fa fa-fw fa-link"></i>
             <span class="nav-link-text">About us</span>
           </a>
